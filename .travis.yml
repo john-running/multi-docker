@@ -1,9 +1,9 @@
 sudo: required
 services:
-  -docker
+  - docker
 
 before_install: 
-  -docker build -t jrunning/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t jrunning/react-test -f ./client/Dockerfile.dev ./client
 # can build other projects here to run more tests optionally 
 
 script:
