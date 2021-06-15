@@ -1,4 +1,3 @@
-# unnecessary comment here
 sudo: required
 services:
   - docker
@@ -23,7 +22,7 @@ after_success:
   - docker push jrunning/multi-server
   - docker push jrunning/multi-worker
 
-  deploy:
+deploy:
   provider: elasticbeanstalk
   region: "us-east-1"
   app: "multi-docker"
