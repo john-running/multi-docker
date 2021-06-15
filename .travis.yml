@@ -1,0 +1,23 @@
+sudo: required
+services:
+  -docker
+
+before_install: 
+  -docker build -t jrunning/react-test -f ./client/Dockerfile.dev ./client
+# can build other projects here to run more tests optionally 
+
+script:
+  - docker run -e CI=true jrunning/react-test npm test
+
+after_success: 
+  - docker build -t jrunning/multi-client ./client
+  - docker build -t jrunning/multi-nginx ./nginx
+  - docker build -t jrunning/multi-server ./server
+  - docker build -t jrunning/multi-worker ./worker
+  #Log into the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  #push these images to docker hub
+  - docker push jrunning/multi-client
+  - docker push jrunning/multi-nginx
+  - docker push jrunning/multi-server
+  - docker push jrunning/multi-worker
