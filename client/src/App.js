@@ -14,7 +14,7 @@ function App() {
                         Home
                     </Link>
                     <Link className="item" to="/otherpage">
-                        Other Page
+                        Another Page 
                     </Link>
                 </div>
                 <div>

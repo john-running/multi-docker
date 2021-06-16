@@ -27,14 +27,14 @@
             "image": "jrunning/multi-nginx",
             "hostname": "nginx",
             "essential": true,
-            "memory": 512,
             "portMappings": [
                 {
                     "hostPort": 80,
                     "containerPort": 80
                 }
             ],
-            "Links": ["client", "server"]
+            "Links": ["client", "server"],
+            "memory": 512
         }
     ]
 }
